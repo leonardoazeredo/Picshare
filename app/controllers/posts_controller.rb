@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-
   # GET /posts
   # GET /posts.json
   def index
@@ -71,4 +70,9 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:caption)
     end
+
+  # # Helper Proxy
+  # def current_user
+  #   session[:user_id] && User.find(session[:user_id, :image])
+  # end
 end
