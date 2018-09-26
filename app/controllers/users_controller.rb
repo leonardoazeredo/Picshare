@@ -1,12 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
-  # GET /users
-  # GET /users.json
-  def index
-    @users = User.all
-  end
-
+  before_action :confirm_authorization, only: [:edit, :update, :destroy]
   # GET /users/1
   # GET /users/1.json
   def show
@@ -56,7 +50,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to users_url, notice: 'You have deleted your account.' }
       format.json { head :no_content }
     end
   end
@@ -71,4 +65,10 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:username, :password, :password_confirmation)
     end
+
+  def confirm_authorization
+    unless current_user == @user
+      redirect_to root_path, alert: "You don't have permission to do that."
+    end
+  end
 end
