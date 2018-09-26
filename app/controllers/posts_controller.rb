@@ -68,11 +68,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:caption)
+      params.require(:post).permit(:caption, :image)
     end
 
-  # # Helper Proxy
-  # def current_user
-  #   session[:user_id] && User.find(session[:user_id, :image])
-  # end
 end

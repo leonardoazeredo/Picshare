@@ -1,12 +1,7 @@
-
 <p>
-  <strong>Caption:</strong>
-  <%= @post.caption %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= link_to @post.user.username, user_path(@post.user) %>
+  <p> <strong><%= link_to @post.user %> </strong>
+  <p><%= image_tag(@post.image.url)%></p>
+  <p><em><%= @post.caption %></em>  </p>
 </p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
