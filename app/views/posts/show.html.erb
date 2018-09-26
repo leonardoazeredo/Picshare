@@ -1,5 +1,5 @@
 <p>
-  <p> <strong><%= link_to @post.user %> </strong>
+  <p> <strong><%= link_to @post.user, @post.user %> </strong>
   <p><%= image_tag(@post.image.url)%></p>
   <p><em><%= @post.caption %></em>  </p>
 </p>
